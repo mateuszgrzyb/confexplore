@@ -1,0 +1,63 @@
+
+<form method="post" action="{% url 'home' %}">
+ {% csrf_token %}
+  <!--
+    info nt datalist w firefox
+    dziala, tylko nie pokazuje strzalki z boku
+    na chromie wszystko dziala
+  -->
+
+  <ul id="navbar">
+    <li>
+      <a href="{% url 'home' %}">ConfExplore</a>
+    </li>
+    <li>
+      <input type="text" name="name">
+    </li>
+    <li>
+      <input type="submit">
+    </li>
+    <li>
+      <input type="text" name="type" list="types">
+      <datalist id="types">
+        <option value="type1">
+        <option value="type2">
+        <option value="type3">
+        <option value="type4">
+      </datalist>
+    </li>
+    <li>
+      <input type="text" name="city" list="cities">
+      <datalist id="cities">
+        <option value="city1">
+        <option value="city2">
+        <option value="city3">
+        <option value="city4">
+        <option value="city5">
+      </datalist>
+    </li>
+    <li>
+      <div id="usermenu">
+        <button id="usermenu-btn">User</button>
+        <div id="usermenu-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>
+      <!--
+      <span>
+        {% if user_type == "user" %}
+          Zwykly uzytkownik
+        {% elif user_type == "volunteer" %}
+          Wolontariusz
+        {% elif user_type == "organizer" %}
+          Organizator
+        {% else %}
+          Niezalogowany użytkownik
+        {% endif %}
+      </span>
+      -->
+    </li>
+  </ul>
+</form>

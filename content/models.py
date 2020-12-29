@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from users.models import User
+from users.models import NormalUser
 
 
 class Event(models.Model):
@@ -15,4 +15,4 @@ class Event(models.Model):
 
 class Ticket(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    owner = models.ManyToManyField(User, blank=True, related_name='tickets')
+    owner = models.ManyToManyField(NormalUser, blank=True, related_name='tickets')

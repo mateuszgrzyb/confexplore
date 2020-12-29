@@ -1,8 +1,8 @@
-from django.urls import path
+from django.urls import path, re_path
 
 from content.views import HomeView, SearchView
 
 urlpatterns = [
-    path('home/',   HomeView.as_view(),   'home'),
-    path('search/', SearchView.as_view(), 'search'),
+    path('',        HomeView.as_view(),   name='home'),
+    path('search/', SearchView.as_view(), name='search'),
 ]
