@@ -1,13 +1,40 @@
 input::-webkit-calendar-picker-indicator {
-    opacity: 100;
+  opacity: 100;
 }
 
 ul#navbar li {
-    display: inline;
+  display: inline;
 }
 
 ul#navbar {
-    padding: 10px;
+  width: 90%;
+}
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#footer ul {
+  margin: auto;
+  width: 50%;
+}
+
+#footer {
+
+  height: 100px;
+  width: 100%;
+  background: grey;
+}
+
+#footer * {
+  color: black;
+}
+
+#footer li {
+  display: inline;
 }
 
  /* Dropdown Button */

@@ -1,6 +1,5 @@
-from enum import Enum
-
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render
 
@@ -13,16 +12,41 @@ class LoggedView(LoginRequiredMixin, View):
     login_url = reverse_lazy('login')
 
 
+def wrapper(context: dict, request: HttpRequest) -> dict:
+    context['types'] = [
+        'Typ 1',
+        'Typ 2',
+        'Typ 3',
+        'Typ 4',
+        'Typ 5',
+        'Typ 6',
+    ]
+
+    context['cities'] = [
+        'Krakow',
+        'Berlin',
+        'Moskwa',
+        'Pila',
+    ]
+
+    try:
+        context['user_type'] = request.user.profile.get_role()
+    except AttributeError:
+        pass
+    return context
+
+
 class HomeView(View):
     def get(self, request: HttpRequest):
         context = {
-            'user_type': request.user
         }
-        return render(request, 'content/home.html', context)
+        return render(request, 'content/home.html', wrapper(context, request))
 
     def post(self, request: HttpRequest):
-        print(request.POST)
-        return HttpResponse()
+        keys = ['name', 'type', 'city']
+        kwars = {key: request.POST[key] for key in keys}
+        html = "\n".join(f'<p>{k}: \"{v}\"' for k, v in kwars.items())
+        return HttpResponse(html)
 
 
 class SearchView(View):

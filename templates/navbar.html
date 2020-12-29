@@ -1,5 +1,5 @@
 
-<form method="post" action="{% url 'home' %}">
+<form id="search" method="post" action="{% url 'home' %}">
  {% csrf_token %}
   <!--
     info nt datalist w firefox
@@ -18,46 +18,46 @@
       <input type="submit">
     </li>
     <li>
-      <input type="text" name="type" list="types">
-      <datalist id="types">
-        <option value="type1">
-        <option value="type2">
-        <option value="type3">
-        <option value="type4">
-      </datalist>
+
+      <select name="type">
+        <option value="">--Typ--</option>
+        {% for type in types %}
+          <option value="{{ type }}">{{ type }}</option>
+        {% endfor %}
+      </select>
     </li>
     <li>
-      <input type="text" name="city" list="cities">
-      <datalist id="cities">
-        <option value="city1">
-        <option value="city2">
-        <option value="city3">
-        <option value="city4">
-        <option value="city5">
-      </datalist>
+      <select name="city">
+        <option value="">--Miasto--</option>
+        {% for city in cities %}
+          <option value="{{ city }}">{{ city }}</option>
+        {% endfor %}
+      </select>
     </li>
     <li>
       <div id="usermenu">
         <button id="usermenu-btn">User</button>
         <div id="usermenu-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+
+          {% if user_type == "U" %}
+            <a href="#">Moje wydarzenia</a>
+            <a href="#">Ustawienia konta</a>
+            <a href="{% url 'logout' %}">Wyloguj</a>
+          {% elif user_type == "V" %}
+          {% elif user_type == "O" %}
+            <a href="#">Ustawienia konta</a>
+            <a href="#">Zarządzaj wydarzeniami</a>
+            <a href="{% url 'logout' %}">Wyloguj</a>
+          {% elif user_type == "A" %}
+            <a href="#">Zarządzaj wydarzeniami</a>
+            <a href="#">Zarządzaj użytkownikami</a>
+            <a href="{% url 'logout' %}">Wyloguj</a>
+          {% else %}
+            <a href="{% url 'login' %}">Zaloguj</a>
+            <a href="{% url 'register' %}">Zarejestruj</a>
+          {% endif %}
         </div>
       </div>
-      <!--
-      <span>
-        {% if user_type == "user" %}
-          Zwykly uzytkownik
-        {% elif user_type == "volunteer" %}
-          Wolontariusz
-        {% elif user_type == "organizer" %}
-          Organizator
-        {% else %}
-          Niezalogowany użytkownik
-        {% endif %}
-      </span>
-      -->
     </li>
   </ul>
 </form>
