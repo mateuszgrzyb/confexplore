@@ -43,7 +43,7 @@ class HomeView(View):
         return render(request, 'content/home.html', wrapper(context, request))
 
     def post(self, request: HttpRequest):
-        keys = ['name', 'type', 'city']
+        keys = ['name', 'type', 'city','events']
         kwars = {key: request.POST[key] for key in keys}
         html = "\n".join(f'<p>{k}: \"{v}\"' for k, v in kwars.items())
         return HttpResponse(html)
@@ -57,7 +57,21 @@ class TicketOwnedView( View):
         context = {
         }
         return render(request, 'content/ticketOwned.html', wrapper(context, request))
+ 
+    def post(self, request: HttpRequest):
+        keys = ['name', 'type', 'city']
+        kwars = {key: request.POST[key] for key in keys}
+        html = "\n".join(f'<p>{k}: \"{v}\"' for k, v in kwars.items())
+        return HttpResponse(html)
+        
 
+
+class YourEventsView( View):
+    def get(self, request: HttpRequest):
+        context = {
+        }
+        return render(request, 'content/yourEvents.html', wrapper(context, request))
+ 
     def post(self, request: HttpRequest):
         keys = ['name', 'type', 'city']
         kwars = {key: request.POST[key] for key in keys}
