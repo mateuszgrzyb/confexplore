@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% block content %}
+<div style="text-align: center;">
+    <h2>Twoje wydarzenia</h2>
+    <button type="button">Dodaj wydarzenie </button>
+</div>
+<!-- TODO przenieść te style do pliku css -->
+<!-- TODO dodać granice w tej tabeli między wierszami -->
+<table style="margin:  auto ;padding: 15px;max-width: 90%;">
+    <tr>
+        <td>Tu powinno być zdjęcie </td>
+        <td style="padding-left: 5%;padding-right: 5%;">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ligula arcu, dictum ac egestas ut,
+                ornare vitae enim. Praesent blandit non nisi vitae facilisis. Maecenas auctor, velit sit amet tincidunt
+                laoreet, purus ipsum rutrum odio, ac efficitur felis mi pharetra tellus. Pellentesque habitant morbi
+                tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus eu finibus ex. Morbi non
+                congue elit, vel vulputate sapien. Donec viverra imperdiet leo nec fringilla. Aliquam a velit
+                scelerisque, efficitur augue ut, tempus felis. Curabitur tempor risus sit amet placerat efficitur. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit. Praesent a nunc ultricies risus facilisis sodales. In
+                hac habitasse platea dictumst.
+            </p>
+            <div style="text-align: center;">
+                <button type="button">Podgląd wydarzenia</button>
+                <button type="button">edytuj</button>
+            </div>
+        </td>
+        <!-- TODO zrobić to tak żeby dobrze wyglądało -->
+        <td style="background-color: lightslategray;text-align: center;">
+            <div style="padding-left: 20%;padding-right: 50%;">
+                Cena: sfsdfsdf
+                Data: sdfsdfsdf
+                lokalizacji: sdfsdf
+            </div>
+        </td>
+    </tr>
+</table>
+{% endblock content %}
