@@ -92,3 +92,17 @@ class EventsToAcceptView( View):
         return HttpResponse(html)
         
 
+
+class eventPreviewView( View):
+    def get(self, request: HttpRequest):
+        context = {
+        }
+        return render(request, 'content/eventPreview.html', wrapper(context, request))
+ 
+    def post(self, request: HttpRequest):
+        keys = ['name', 'type', 'city']
+        kwars = {key: request.POST[key] for key in keys}
+        html = "\n".join(f'<p>{k}: \"{v}\"' for k, v in kwars.items())
+        return HttpResponse(html)
+        
+
