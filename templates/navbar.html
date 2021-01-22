@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg bg-dark">
   <a class="navbar-brand" href="{% url 'home' %}">Confexplore</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,46 +10,50 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Wyszukaj">
 
 
-      <select class="form-control" name="type">
+      <select class="form-control m-1" name="type">
       <option>--Kategoria--</option>
           {% for type in types %}
             <option>{{ type }}</option>
           {% endfor %}
       </select>
-      <select class="form-control" name="city">
+      <select class="form-control m-1" name="city">
       <option>--Lokalizacja--</option>
           {% for city in cities %}
             <option>{{ city }}</option>
           {% endfor %}
       </select>
-      <button class="btn btn-secondary mr-1" type="submit">Wyszukaj</button>
+      <button class="btn btn-secondary m-1" type="submit">Wyszukaj</button>
     </form>
     </ul>
-  </div>
-
-
-  <div id="usermenu">
-      <button type="button" class="btn btn-dark" id="usermenu-btn">User</button>
-        <div id="usermenu-content">
-
-          {% if user_type == "U" %}
-            <a href="#">Moje wydarzenia</a>
-            <a href="#">Ustawienia konta</a>
-            <a href="{% url 'logout' %}">Wyloguj</a>
+     <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="usermenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          User
+        </a>
+        <div class="dropdown-menu" aria-labelledby="usermenu">
+         {% if user_type == "U" %}
+            <a class="dropdown-item" href="#">Moje wydarzenia</a>
+            <a class="dropdown-item" href="#">Ustawienia konta</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
           {% elif user_type == "V" %}
           {% elif user_type == "O" %}
-            <a href="#">Ustawienia konta</a>
-            <a href="#">Zarządzaj wydarzeniami</a>
-            <a href="{% url 'logout' %}">Wyloguj</a>
+            <a class="dropdown-item" href="#">Ustawienia konta</a>
+            <a class="dropdown-item" href="#">Zarządzaj wydarzeniami</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
           {% elif user_type == "A" %}
-            <a href="#">Zarządzaj wydarzeniami</a>
-            <a href="#">Zarządzaj użytkownikami</a>
-            <a href="{% url 'logout' %}">Wyloguj</a>
+            <a class="dropdown-item" href="#">Zarządzaj wydarzeniami</a>
+            <a class="dropdown-item" href="#">Zarządzaj użytkownikami</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
           {% else %}
-            <a href="{% url 'login' %}">Zaloguj</a>
-            <a href="{% url 'register' %}">Zarejestruj</a>
+            <a class="dropdown-item" href="{% url 'login' %}">Zaloguj</a>
+            <a class="dropdown-item" href="{% url 'register' %}">Zarejestruj</a>
           {% endif %}
         </div>
+      </li>
+
+
   </div>
+</div>
+
+
 
 </nav>
