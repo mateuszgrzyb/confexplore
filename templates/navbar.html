@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg bg-dark">
+<nav class="navbar static-top navbar-expand-lg bg-dark">
   <a class="navbar-brand" href="{% url 'home' %}">Confexplore</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -26,8 +26,8 @@
     </form>
     </ul>
      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="usermenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          User
+        <a class="btn btn-secondary dropdown-toggle" href="#" id="usermenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Użytkownik
         </a>
         <div class="dropdown-menu" aria-labelledby="usermenu">
          {% if user_type == "U" %}
