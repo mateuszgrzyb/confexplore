@@ -1,37 +1,45 @@
 {% extends 'main.html' %}
 {% block content %}
 <div style="text-align: center;">
-    <h2>Wydarzenia na jakie jesteś zapisany</h2>
+    <h2>wydarzenia na jakie jesteś zapisany </h2>
 </div>
 <!-- TODO przenieść te style do pliku css -->
-<!-- TODO dodać granice w tej tabeli między wierszami -->
-<table style="margin:  auto ;padding: 15px;max-width: 90%;">
-    <tr>
-        <td>Tu powinno być zdjęcie </td>
-        <td style="padding-left: 5%;padding-right: 5%;">
+<!-- TODO dodać odstęp od tytułu do treści -->
+<div class="container ">
+    <div class="row border-bottom" style="border-width:3px !important">
+        <div class="col">
+            <p> tu powinno być zdjęcie</p>
+        </div>
+
+        <div class="col-6">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ligula arcu, dictum ac egestas ut,
-                ornare vitae enim. Praesent blandit non nisi vitae facilisis. Maecenas auctor, velit sit amet tincidunt
-                laoreet, purus ipsum rutrum odio, ac efficitur felis mi pharetra tellus. Pellentesque habitant morbi
-                tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus eu finibus ex. Morbi non
-                congue elit, vel vulputate sapien. Donec viverra imperdiet leo nec fringilla. Aliquam a velit
-                scelerisque, efficitur augue ut, tempus felis. Curabitur tempor risus sit amet placerat efficitur. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit. Praesent a nunc ultricies risus facilisis sodales. In
-                hac habitasse platea dictumst.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate tempus ipsum aliquam convallis.
+                Nunc at pulvinar leo, vitae tempus metus. Mauris mattis justo sit amet mauris cursus elementum. Aliquam
+                sit amet nibh vel ante pretium viverra. Phasellus ultricies at erat nec pulvinar. Nunc vel dui vel purus
+                malesuada posuere quis at augue. Curabitur non ipsum vel augue pellentesque molestie vitae vel ante.
+                Curabitur tincidunt maximus elit, ut vestibulum massa convallis vitae. Morbi vitae ipsum elit. Nulla
+                eget tincidunt augue, at pellentesque nibh. Vestibulum ac lacus varius ex semper scelerisque ac et
+                purus. Pellentesque viverra tincidunt dapibus. Nunc gravida ultrices dui nec pretium. Proin in mollis
+                urna. Nulla vel leo enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
             <div style="text-align: center;">
-                <button type="button">Kup Bilet </button>
-                <button type="button">Pokaż więcej </button>
+                <button type="button" class="btn btn-primary">Pokaż więcej</button>
+                <button type="button" class="btn btn-primary">Anuluj bilet</button>
             </div>
-        </td>
-        <!-- TODO zrobić to tak żeby dobrze wyglądało -->
-        <td style="background-color: lightslategray;text-align: center;">
-            <div style="padding-left: 20%;padding-right: 50%;">
-                Cena: sfsdfsdf
-                Data: sdfsdfsdf
-                lokalizacji: sdfsdf
+        </div>
+
+        <div class="col">
+            <div class="jumbotron">
+                cena: 20 zł <br>
+                <br>
+                data: 20 zł <br>
+                <br>
+                lokalizacja: 20 zł <br>
+                <br>
             </div>
-        </td>
-    </tr>
-</table>
+        </div>
+    </div>
+</div>
+
+
 {% endblock content %}
