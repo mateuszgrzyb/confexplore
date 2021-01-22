@@ -1,42 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'home' %}">Confexplore</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<form id="search" method="post" action="{% url 'home' %}">
- {% csrf_token %}
-  <!--
-    info nt datalist w firefox
-    dziala, tylko nie pokazuje strzalki z boku
-    na chromie wszystko dziala
-  -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Wyszukaj">
 
-  <ul id="navbar">
-    <li>
-      <a href="{% url 'home' %}">ConfExplore</a>
-    </li>
-    <li>
-      <input type="text" name="name">
-    </li>
-    <li>
-      <input type="submit" value="Search">
-    </li>
-    <li>
 
-      <select name="type">
-        <option value="">--Typ--</option>
-        {% for type in types %}
-          <option value="{{ type }}">{{ type }}</option>
-        {% endfor %}
+      <select class="form-control" name="type">
+      <option>--Kategoria--</option>
+          {% for type in types %}
+            <option>{{ type }}</option>
+          {% endfor %}
       </select>
-    </li>
-    <li>
-      <select name="city">
-        <option value="">--Miasto--</option>
-        {% for city in cities %}
-          <option value="{{ city }}">{{ city }}</option>
-        {% endfor %}
+      <select class="form-control" name="city">
+      <option>--Lokalizacja--</option>
+          {% for city in cities %}
+            <option>{{ city }}</option>
+          {% endfor %}
       </select>
-    </li>
-    <li>
-      <div id="usermenu">
-        <button id="usermenu-btn">User</button>
+      <button class="btn btn-secondary mr-1" type="submit">Wyszukaj</button>
+    </form>
+    </ul>
+  </div>
+
+
+  <div id="usermenu">
+      <button type="button" class="btn btn-dark" id="usermenu-btn">User</button>
         <div id="usermenu-content">
 
           {% if user_type == "U" %}
@@ -57,7 +50,6 @@
             <a href="{% url 'register' %}">Zarejestruj</a>
           {% endif %}
         </div>
-      </div>
-    </li>
-  </ul>
-</form>
+  </div>
+
+</nav>
