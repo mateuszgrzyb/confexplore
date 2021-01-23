@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% block content %}
+<!-- @TODO dodać przyciski do rejestracji i do powrotu -->
+<div class="jumbotron">
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Adres email </label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Hasło</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło">
+        </div>
+        <!-- @TODO przydało by się żeby ten przycisk był wycentrowany -->
+        <button type="submit" class="btn btn-primary">Zaloguj</button>
+    </form>
+</div>
+{% endblock content %}
