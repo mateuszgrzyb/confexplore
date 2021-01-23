@@ -10,13 +10,27 @@ from django.views.generic import CreateView
 
 # from users.forms import RegistrationForm
 
-
+# ---------------------
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import UserRegisterForm
 class LoginView(BaseLoginView):
     template_name = 'users/login.html'
 
+def RegisterView(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}!')
+            return redirect('blog-home')
+    else:
+        form = UserRegisterForm()
+    return render(request, 'users/register.html', {'form': form})
 
-class RegisterView(CreateView):
-    pass
+# class RegisterView(CreateView):
+#     pass
     # form_class = RegistrationForm
     # success_url = reverse_lazy('home')
     # template_name = 'users/register.html'
