@@ -15,7 +15,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-GEEKS_CHOICES =( 
+ROLE =( 
     ("1", "Wolontariusz"), 
     ("2", "Uczestnik"), 
     ("3", "Organizator"), 
@@ -23,7 +23,7 @@ GEEKS_CHOICES =(
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
-    rodzaj_użytkownika = forms.ChoiceField(choices = GEEKS_CHOICES)
+    rodzaj_użytkownika = forms.ChoiceField(choices = ROLE)
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
