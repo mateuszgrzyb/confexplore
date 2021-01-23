@@ -16,8 +16,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 ROLE =( 
-    ("1", "Wolontariusz"), 
-    ("2", "Uczestnik"), 
+    ("1", "Uczestnik"), 
+    ("2", "Wolontariusz"), 
     ("3", "Organizator"), 
 )
 
@@ -26,5 +26,5 @@ class UserRegisterForm(UserCreationForm):
     rodzaj_użytkownika = forms.ChoiceField(choices = ROLE)
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2','rodzaj_użytkownika']
     
