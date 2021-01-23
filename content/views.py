@@ -106,3 +106,24 @@ class eventPreviewView( View):
         return HttpResponse(html)
         
 
+class buyHowManyView (View):
+    def get(self, request: HttpRequest):
+        context = {
+        }
+        return render(request, 'content/buyHowMany.html', wrapper(context, request))
+
+
+
+class buyWhatView (View):
+    def get(self, request: HttpRequest):
+        context = {
+        }
+        return render(request, 'content/buyWhat.html', wrapper(context, request))
+
+
+class transactionView (View):
+    def get(self, request: HttpRequest):
+        context = {
+        }
+        return render(request, 'content/transaction.html', wrapper(context, request))
+

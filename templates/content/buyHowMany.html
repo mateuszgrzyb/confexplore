@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<nav class="nav m-5">
+  <p class="text-secondary mr-1" >Konferencja x > </p>
+  <p class="text-primary mr-1" >Wybierz Liczbę biletów > </p>
+  <p class="text-secondary mr-1">Wybierz rodzaje biletów > </p>
+  <p class="text-secondary mr-1" >Opłać bilety</p>
+</nav>
+
+
+<h3 class="text-center m-5">Wybierz liczbę biletów</h3>
+
+<div class="container ">
+
+      <div class="jumbotron">
+          <select class="form-control form-control-lg">
+          <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+        </select>
+
+</div>
+</div>
+
+ <div class="row">
+    <div class="col-auto mr-auto">
+      <a class="btn btn-light btn-lg" href="#" role="button">Anuluj</a>
+    </div>
+    <div class="col-auto">
+       <a class="btn btn-primary btn-lg " href="#" role="button">Dalej</a>
+    </div>
+
+</div>
+
+
+
+{% endblock content %}
