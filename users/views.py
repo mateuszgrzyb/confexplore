@@ -23,8 +23,17 @@ def RegisterView(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
+            if form.cleaned_data.get('rodzaj_użytkownika') == '1':
+                # opcja zwykłego użytkownika 
+                print(1)
+            if form.cleaned_data.get('rodzaj_użytkownika') == '2':
+                # opcja wolontriusza  
+                print(2)
+            if form.cleaned_data.get('rodzaj_użytkownika') == '3':
+                # opcja organizatora  
+                print(1)
             messages.success(request, f'Account created for {username}!')
-            return redirect('blog-home')
+            return redirect('home')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
