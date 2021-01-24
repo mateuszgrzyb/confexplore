@@ -1,4 +1,11 @@
 {% extends 'main.html' %}
 {% block content %}
-  <p>faq</p>
+  <div class="jumbotron mt-5">
+    <h2>FAQ</h2><br>
+    {% for point in faq %}
+      <h4>{{ forloop.counter }}. {{ point.question }}?</h4>
+      <p>{{ point.answer }}</p>
+      <br>
+    {% endfor %}
+  </div>
 {% endblock %}

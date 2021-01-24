@@ -1,4 +1,13 @@
 {% extends 'main.html' %}
 {% block content %}
-  <p>regulamin</p>
+  {% for point in regulamin %}
+    <div class="jumbotron mt-5">
+      <h3>{{ forloop.counter }}. {{ point.title }}</h3>
+      <ol>
+        {% for subpoint in point.list %}
+          <li>{{ subpoint }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+  {% endfor %}
 {% endblock %}
