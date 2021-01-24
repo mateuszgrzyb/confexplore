@@ -13,28 +13,28 @@ class LoggedView(LoginRequiredMixin, View):
     login_url = reverse_lazy('login')
 
 
-def wrapper(context: dict, request: HttpRequest) -> dict:
-
-    context['types'] = Type.objects.all()
-
-    context['cities'] = City.objects.all()
-
-    try:
-        context['user_type'] = request.user.profile.get_role()
-    except AttributeError:
-        pass
-    return context
+# def wrapper(context: dict, request: HttpRequest) -> dict:
+#     context['types'] = Type.objects.all()
+#
+#     context['cities'] = City.objects.all()
+#
+#     try:
+#         context['user_type'] = request.user.profile.get_role()
+#     except AttributeError:
+#         pass
+#     return context
 
 
 class HomeView(View):
     def get(self, request: HttpRequest):
         context = {
-            'events' : Event.objects.all()
+            'events': Event.objects.all()
         }
-        return render(request, 'content/home.html', wrapper(context, request))
+        return render(request, 'content/home.html', context)
+
 
     def post(self, request: HttpRequest):
-        keys = ['name', 'type', 'city','events']
+        keys = ['name', 'type', 'city', 'events']
         kwars = {key: request.POST[key] for key in keys}
         html = "\n".join(f'<p>{k}: \"{v}\"' for k, v in kwars.items())
         return HttpResponse(html)
@@ -51,36 +51,17 @@ class SearchView(View):
 
         context = {
 
-        'events' : object_list,
-        'loc' : loc,
-        'typ' : typ
+            'events': object_list,
+            'loc': loc,
+            'typ': typ
         }
-        return render(request, 'content/search.html', wrapper(context, request))
+        return render(request, 'content/search.html', context)
 
 
-
-
-class TicketOwnedView( View):
+class TicketOwnedView(View):
     def get(self, request: HttpRequest):
-        context = {
-        }
-        return render(request, 'content/ticketOwned.html', wrapper(context, request))
- 
-    def post(self, request: HttpRequest):
-        keys = ['name', 'type', 'city']
-        kwars = {key: request.POST[key] for key in keys}
-        html = "\n".join(f'<p>{k}: \"{v}\"' for k, v in kwars.items())
-        return HttpResponse(html)
-        
+        return render(request, 'content/ticketOwned.html')
 
-
-class YourEventsView( View):
-    def get(self, request: HttpRequest):
-        context = {
-            'events' : Event.objects.all()
-        }
-        return render(request, 'content/yourEvents.html', wrapper(context, request))
- 
     def post(self, request: HttpRequest):
         keys = ['name', 'type', 'city']
         kwars = {key: request.POST[key] for key in keys}
@@ -88,51 +69,60 @@ class YourEventsView( View):
         return HttpResponse(html)
 
 
-class EventsToAcceptView( View):
+class YourEventsView(View):
     def get(self, request: HttpRequest):
         context = {
+            'events': Event.objects.all()
         }
-        return render(request, 'content/eventsToAccept.html', wrapper(context, request))
- 
+        return render(request, 'content/yourEvents.html', context)
+
     def post(self, request: HttpRequest):
         keys = ['name', 'type', 'city']
         kwars = {key: request.POST[key] for key in keys}
         html = "\n".join(f'<p>{k}: \"{v}\"' for k, v in kwars.items())
         return HttpResponse(html)
-        
 
 
-class eventPreviewView( View):
+class EventsToAcceptView(View):
     def get(self, request: HttpRequest):
-        context = {
-        }
-        return render(request, 'content/eventPreview.html', wrapper(context, request))
- 
+        return render(request, 'content/eventsToAccept.html')
+
     def post(self, request: HttpRequest):
         keys = ['name', 'type', 'city']
         kwars = {key: request.POST[key] for key in keys}
         html = "\n".join(f'<p>{k}: \"{v}\"' for k, v in kwars.items())
         return HttpResponse(html)
-        
 
-class buyHowManyView (View):
+
+class eventPreviewView(View):
+    def get(self, request: HttpRequest):
+        return render(request, 'content/eventPreview.html')
+
+
+
+    def post(self, request: HttpRequest):
+        keys = ['name', 'type', 'city']
+        kwars = {key: request.POST[key] for key in keys}
+        html = "\n".join(f'<p>{k}: \"{v}\"' for k, v in kwars.items())
+        return HttpResponse(html)
+
+
+class buyHowManyView(View):
     def get(self, request: HttpRequest):
         context = {
         }
-        return render(request, 'content/buyHowMany.html', wrapper(context, request))
+        return render(request, 'content/buyHowMany.html', context)
 
 
-
-class buyWhatView (View):
+class buyWhatView(View):
     def get(self, request: HttpRequest):
         context = {
         }
-        return render(request, 'content/buyWhat.html', wrapper(context, request))
+        return render(request, 'content/buyWhat.html', context)
 
 
-class transactionView (View):
+class transactionView(View):
     def get(self, request: HttpRequest):
         context = {
         }
         return render(request, 'content/transaction.html', wrapper(context, request))
-

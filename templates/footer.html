@@ -4,14 +4,15 @@
 <footer class="bg-dark fixed-bottom text-center  text-lg-start">
   <!-- Grid container -->
   <div class="container p-3">
-  <p><a href="#" class="p-5 text-light">Pomoc</a>
-    <a href="#" class="p-5 text-light">Regulamin</a>
-   <a href="#" class="p-5 text-light">Kontakt</a></p>
+  <p>
+    <a href="{% url 'faq' %}" class="p-5 text-light">Pomoc</a>
+    <a href="{% url 'regulamin' %}" class="p-5 text-light">Regulamin</a>
+    <a href="{% url 'kontakt' %}" class="p-5 text-light">Kontakt</a></p>
   </div>
 
   <div class="text-center text-light p-3" style="background-color: rgba(0, 0, 0, 0.2)">
     © 2021 Copyright:
-    <a class="text-primary" href=#>Confexplore</a>
+    <a class="text-primary" href='#'>Confexplore</a>
   </div>
   <!-- Copyright -->
 </footer>

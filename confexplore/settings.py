@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # user created apps
     'content.apps.ContentConfig',
     'users.apps.UsersConfig',
+    'misc.apps.MiscConfig',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'content.context_processors.search',
             ],
         },
     },

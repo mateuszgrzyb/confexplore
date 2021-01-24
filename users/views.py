@@ -13,11 +13,16 @@ from django.views.generic import CreateView
 # ---------------------
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.views.generic import TemplateView
+
 from .forms import UserRegisterForm
+
+
 class LoginView(BaseLoginView):
     template_name = 'users/login.html'
 
-def RegisterView(request):
+
+def register_view(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -38,15 +43,16 @@ def RegisterView(request):
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
+
 # class RegisterView(CreateView):
 #     pass
-    # form_class = RegistrationForm
-    # success_url = reverse_lazy('home')
-    # template_name = 'users/register.html'
-    #
-    # def form_valid(self, form: RegistrationForm) -> HttpResponseRedirect:
-    #     valid = super(RegisterView, self).form_valid(form)
-    #     return valid
+# form_class = RegistrationForm
+# success_url = reverse_lazy('home')
+# template_name = 'users/register.html'
+#
+# def form_valid(self, form: RegistrationForm) -> HttpResponseRedirect:
+#     valid = super(RegisterView, self).form_valid(form)
+#     return valid
 
 
 class LogoutView(View):
@@ -57,3 +63,7 @@ class LogoutView(View):
 
 class ResetPasswordView(View):
     pass
+
+
+class ManageUsersView(TemplateView):
+    template_name = 'users/manageusers.html'
