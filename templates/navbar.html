@@ -10,19 +10,19 @@
   </button>
   {% endcomment %}
 
-    <ul class="navbar-nav mr-auto">
-      <li>
+    <ul class="navbar-nav w-100">
+      <li class="mx-auto">
         <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
           <input class="form-control mr-sm-2" type="search" name ='q' placeholder="Wyszukaj" aria-label="Wyszukaj" >
 
 
-          <select class="form-control m-1" name="type">
+          <select class="form-select m-1" name="type">
             <option>--Kategoria--</option>
             {% for type in types %}
               <option>{{ type.name }}</option>
             {% endfor %}
           </select>
-          <select class="form-control m-1" name="city">
+          <select class="form-select m-1" name="city">
             <option>--Lokalizacja--</option>
             {% for city in cities %}
               <option>{{ city.name }}</option>
@@ -31,7 +31,7 @@
           <button class="btn btn-secondary m-1" type="submit">Wyszukaj</button>
         </form>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown m-1 ml-auto">
         <a class="btn btn-secondary dropdown-toggle" href="#" id="usermenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Użytkownik
         </a>

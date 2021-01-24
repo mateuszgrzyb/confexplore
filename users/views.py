@@ -1,4 +1,6 @@
 from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
@@ -65,5 +67,12 @@ class ResetPasswordView(View):
     pass
 
 
-class ManageUsersView(TemplateView):
+class ManageUsersView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    TemplateView
+):
+    def test_func(self):
+        return self.request.user.role_name == 'A'
+
     template_name = 'users/manageusers.html'
