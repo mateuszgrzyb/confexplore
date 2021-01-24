@@ -4,14 +4,19 @@ from django.db import models
 from users.models import NormalUser
 
 
-
-
-
 class City(models.Model):
     name = models.CharField(max_length=50, default='Warszawa')
 
+    def __str__(self):
+        return self.name
+
+
 class Type(models.Model):
     name = models.CharField(max_length=100, default='Ogólna')
+
+    def __str__(self):
+        return self.name
+
 
 class Event(models.Model):
     #    class Schedule(models.Model):
@@ -23,6 +28,7 @@ class Event(models.Model):
     localization = models.ForeignKey('City', on_delete=models.CASCADE, default="Warszawa")
     type = models.ForeignKey('Type', on_delete=models.CASCADE, default="Ogólna")
     date = models.CharField(max_length=30, default='1 stycznia')
+
 
 class Ticket(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
