@@ -18,6 +18,7 @@ from django.contrib import messages
 from django.views.generic import TemplateView
 
 from .forms import UserRegisterForm
+from .models import Profile
 
 
 class LoginView(BaseLoginView):
@@ -67,12 +68,30 @@ class ResetPasswordView(View):
     pass
 
 
-class ManageUsersView(
-    LoginRequiredMixin,
-    UserPassesTestMixin,
-    TemplateView
-):
+class AdminRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     def test_func(self):
         return self.request.user.role_name == 'A'
 
+
+class ManageUsersView(
+    #AdminRequiredMixin,
+    TemplateView):
+
     template_name = 'users/manageusers.html'
+    extra_context = {
+        'profiles': Profile.objects.exclude(role_name='A')
+    }
+
+
+class ConfirmUserView(
+    #AdminRequiredMixin,
+    View):
+    def post(self, request: HttpRequest) -> HttpResponse:
+        pk = request.POST["pk"]
+        print(request.POST)
+        p: Profile = Profile.objects.get(pk=pk)
+        r = p.get_role()
+        print(f'\n\nCONFIRM USER PK: {pk}')
+        r.blocked = not r.blocked
+        r.save()
+        return redirect('manage_users')

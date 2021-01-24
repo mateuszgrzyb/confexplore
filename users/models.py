@@ -1,4 +1,3 @@
-
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
@@ -55,16 +54,22 @@ def create_profile_hook(sender, instance: User, created, **kwargs) -> None:
         NormalUser.objects.create(profile=profile)
 
 
-class NormalUser(Role):
-    # blocked = models.BooleanField(default=False)
+class NonAdmin(Role):
+    blocked = models.BooleanField(default=False)
+
+    class Meta:
+        abstract = True
+
+
+class NormalUser(NonAdmin):
     pass
 
 
-class Organizer(Role):
+class Organizer(NonAdmin):
     pass
 
 
-class Volunteer(Role):
+class Volunteer(NonAdmin):
     pass
 
 

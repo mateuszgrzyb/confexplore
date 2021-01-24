@@ -1,4 +1,30 @@
 {% extends 'main.html' %}
 {% block content %}
-  <p>manage users</p>
+    {% for profile in profiles %}
+      <div class="jumbotron">
+        <form method="post" action="{% url 'confirm_user' %}">
+          {% csrf_token %}
+          <p>Name: {{ profile.name }}</p>
+          <p>Email: {{ profile.user.email }}</p>
+          <p>Role: {{ profile.get_role }}</p>
+          <input type="hidden" name="pk" value="{{ profile.pk }}">
+
+          {% if profile.get_role.blocked %}
+            <button type="submit">Unblock</button>
+          {% else %}
+            <button type="submit">Block</button>
+          {% endif %}
+
+          {% comment %}
+          <label>
+            Blocked:
+            <input type="checkbox" name="blocked"{% if profile.get_role.blocked %} checked {% endif %} >
+          </label>
+
+          <br>
+          <button type="submit">Update</button>
+          {% endcomment %}
+        </form>
+      </div>
+    {% endfor %}
 {% endblock %}
