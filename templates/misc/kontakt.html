@@ -4,9 +4,7 @@
     <h2>Kontakt</h2>
     <br>
     {% for admin in admins %}
-      <p>Name: {{ admin.name }}</p>
-      <p>Email: {{ admin.email }}</p>
-      <br>
+      <p>{{ admin.name }}: {{ admin.email }}</p>
     {% endfor %}
   </div>
 {% endblock %}
