@@ -6,6 +6,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse_lazy
 from django.views import View
+from .models import Event, City, Type
 
 
 class LoggedView(LoginRequiredMixin, View):
@@ -13,21 +14,10 @@ class LoggedView(LoginRequiredMixin, View):
 
 
 def wrapper(context: dict, request: HttpRequest) -> dict:
-    context['types'] = [
-        'Typ 1',
-        'Typ 2',
-        'Typ 3',
-        'Typ 4',
-        'Typ 5',
-        'Typ 6',
-    ]
 
-    context['cities'] = [
-        'Krakow',
-        'Berlin',
-        'Moskwa',
-        'Pila',
-    ]
+    context['types'] = Type.objects.all()
+
+    context['cities'] = City.objects.all()
 
     try:
         context['user_type'] = request.user.profile.get_role()
@@ -39,6 +29,7 @@ def wrapper(context: dict, request: HttpRequest) -> dict:
 class HomeView(View):
     def get(self, request: HttpRequest):
         context = {
+            'events' : Event.objects.all()
         }
         return render(request, 'content/home.html', wrapper(context, request))
 
@@ -50,7 +41,24 @@ class HomeView(View):
 
 
 class SearchView(View):
-    pass
+    def get(self, request: HttpRequest):
+        query = self.request.GET.get('q')
+        loc = 'Warszawa'
+        typ = 'Informatyka'
+        object_list = Event.objects.filter(
+            name__icontains=query
+        )
+
+        context = {
+
+        'events' : object_list,
+        'loc' : loc,
+        'typ' : typ
+        }
+        return render(request, 'content/search.html', wrapper(context, request))
+
+
+
 
 class TicketOwnedView( View):
     def get(self, request: HttpRequest):
@@ -69,6 +77,7 @@ class TicketOwnedView( View):
 class YourEventsView( View):
     def get(self, request: HttpRequest):
         context = {
+            'events' : Event.objects.all()
         }
         return render(request, 'content/yourEvents.html', wrapper(context, request))
  

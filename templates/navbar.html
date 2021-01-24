@@ -8,20 +8,20 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Wyszukaj">
+    <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
+      <input class="form-control mr-sm-2" type="search" name ='q' placeholder="Wyszukaj" aria-label="Wyszukaj" >
 
 
       <select class="form-control m-1" name="type">
       <option>--Kategoria--</option>
           {% for type in types %}
-            <option>{{ type }}</option>
+            <option>{{ type.name }}</option>
           {% endfor %}
       </select>
       <select class="form-control m-1" name="city">
       <option>--Lokalizacja--</option>
           {% for city in cities %}
-            <option>{{ city }}</option>
+            <option>{{ city.name }}</option>
           {% endfor %}
       </select>
       <button class="btn btn-secondary m-1" type="submit">Wyszukaj</button>
