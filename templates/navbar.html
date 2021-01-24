@@ -13,21 +13,22 @@
     <ul class="navbar-nav w-100">
       <li class="mx-auto">
         <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
-          <input class="form-control mr-sm-2" type="search" name ='q' placeholder="Wyszukaj" aria-label="Wyszukaj" >
+          <input class="form-control mr-sm-2" type="search" name ='q' placeholder="Wyszukaj wydarzenie" aria-label="Wyszukaj" >
 
 
-          <select class="form-select m-1" name="type">
-            <option>--Kategoria--</option>
-            {% for type in types %}
-              <option>{{ type.name }}</option>
-            {% endfor %}
-          </select>
-          <select class="form-select m-1" name="city">
-            <option>--Lokalizacja--</option>
-            {% for city in cities %}
-              <option>{{ city.name }}</option>
-            {% endfor %}
-          </select>
+
+      <select name="type" id="search-type" class="form-select">
+          <option value="-1">--Kategoria--</option>
+      {% for type in types %}
+          <option value="{{ type.id }}">{{ type.name }}</option>
+      {% endfor %}
+      </select>
+      <select name="city" id="search-city" class="form-select">
+          <option value="-1">--Miasto--</option>
+      {% for city in cities %}
+          <option value="{{ city.id }}">{{ city.name }}</option>
+      {% endfor %}
+      </select>
           <button class="btn btn-secondary m-1" type="submit">Wyszukaj</button>
         </form>
       </li>
