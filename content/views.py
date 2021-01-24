@@ -13,6 +13,7 @@ from .forms import AddEventForm
 from .models import Event, City, Type
 
 
+
 class LoggedView(LoginRequiredMixin, View):
     login_url = reverse_lazy('login')
 
@@ -44,21 +45,22 @@ class HomeView(View):
 
 
 class SearchView(View):
-    def get(self, request: HttpRequest):
-        query = self.request.GET.get('q')
-        loc = 'Warszawa'
-        typ = 'Informatyka'
-        object_list = Event.objects.filter(
-            name__icontains=query
-        )
+    def get(self, request):
+        name = self.request.GET.get('q', '')
+        e_type = int(self.request.GET.get('type', '-1'))
+        city = int(self.request.GET.get('city', '-1'))
 
-        context = {
+        query = {}
+        if name:
+            query['name__icontains'] = name
+        if e_type != -1:
+            query['type__id'] = e_type
+        if city != -1:
+            query['localization__id'] = city
 
-            'events': object_list,
-            'loc': loc,
-            'typ': typ
-        }
-        return render(request, 'content/search.html', context)
+        return render(request, 'content/search.html', {
+            'events': Event.objects.filter(**query)
+        })
 
 
 class TicketOwnedView(View):
