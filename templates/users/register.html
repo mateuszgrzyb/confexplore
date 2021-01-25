@@ -1,16 +1,18 @@
 {% extends 'main.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
+{% load bootstrap4 %}
+
 <div style="padding-bottom: 5%;"></div>
 <div class="jumbotron">
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                {{ form | crispy}}
+                {% bootstrap_form form %}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+                <button class="btn btn-primary" type="submit">Sign Up</button>
             </div>
         </form>
         <div class="border-top pt-3">
