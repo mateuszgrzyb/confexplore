@@ -1,5 +1,8 @@
 {% extends 'main.html' %}
 {% block content %}
+<div class="jumbotron mt-5">
+  <h2>Regulamin serwisu</h2>
+</div>
   {% for point in regulamin %}
     <div class="jumbotron mt-5">
       <h3>{{ forloop.counter }}. {{ point.title }}</h3>

@@ -1,7 +1,9 @@
 {% extends 'main.html' %}
 {% block content %}
+<div class="jumbotron">
+  <h2>Kontakt</h2>
+</div>
   <div class="jumbotron mt-5">
-    <h2>Kontakt</h2>
     <br>
     {% for admin in admins %}
       <p>{{ admin.name }}: {{ admin.email }}</p>

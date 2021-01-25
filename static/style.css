@@ -2,39 +2,24 @@ input::-webkit-calendar-picker-indicator {
   opacity: 100;
 }
 
-ul#navbar li {
-  display: inline;
-}
-
-ul#navbar {
-  width: 90%;
-}
-
-
-
 body {
   margin: 0;
   padding: 0;
 }
 
-#footer ul {
-  margin: auto;
-  width: 50%;
+#navbar {
+  width: 100%;
+}
+
+#content {
+  padding-top: 74px;
+  min-height: calc(100vh - 79px); 
 }
 
 #footer {
-
-  height: 100px;
+  height: 125px;
   width: 100%;
-  background: grey;
-}
-
-#footer * {
-  color: black;
-}
-
-#footer li {
-  display: inline;
+  background-color: #343a40;
 }
 
  /* Dropdown Button */
