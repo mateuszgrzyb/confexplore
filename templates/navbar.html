@@ -33,18 +33,9 @@
           Konto
         </a>
         <div class="dropdown-menu" aria-labelledby="usermenu">
-         {% if user_type == "U" %}
-            <a class="dropdown-item" href="#">Moje wydarzenia</a>
+          {% if user.is_authenticated %}
+            <a class="dropdown-item" href="/yourEvents/">Moje wydarzenia</a>
             <a class="dropdown-item" href="#">Ustawienia konta</a>
-            <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
-          {% elif user_type == "V" %}
-          {% elif user_type == "O" %}
-            <a class="dropdown-item" href="#">Ustawienia konta</a>
-            <a class="dropdown-item" href="#">Zarządzaj wydarzeniami</a>
-            <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
-          {% elif user_type == "A" %}
-            <a class="dropdown-item" href="#">Zarządzaj wydarzeniami</a>
-            <a class="dropdown-item" href="#">Zarządzaj użytkownikami</a>
             <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
           {% else %}
             <a class="dropdown-item" href="{% url 'login' %}">Zaloguj</a>
