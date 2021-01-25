@@ -1,12 +1,11 @@
 {% extends 'main.html' %}
 {% block content %}
-{% load crispy_forms_tags %}
 {% load bootstrap4 %}
 
 <div style="padding-bottom: 5%;"></div>
 <div class="jumbotron">
     <div class="content-section">
-        <form method="POST">
+        <form method="post">
             {% csrf_token %}
             <fieldset class="form-group">
                 {% bootstrap_form form %}
