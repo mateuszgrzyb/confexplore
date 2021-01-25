@@ -2,6 +2,9 @@
 {% block content %}
   <div class="jumbotron">
     <form method="post">
+      <h2>
+        <p class="text-dark" style="text-align: center;">Dodaj wydarzenie:</p>
+      </h2>
       {% csrf_token %}
       {% for field in form %}
         <p>
@@ -9,7 +12,15 @@
           {{ field.label_tag }}: {{ field }}
         </p>
       {% endfor %}
-      <button type="submit">Dodaj</button>
+      <div class="row">
+         <div class="col-auto mr-auto">
+      <a type="button" class="btn btn-light" href="/yourEvents/" role="button">Anuluj</a>
+    </div>
+
+       <div class="col-auto">
+      <a type="button-submit" class="btn btn-primary" href="/yourEvents/">Dodaj</a>
+       </div>
+      </div>
     </form>
   </div>
 
