@@ -6,6 +6,7 @@
 <div class="jumbotron" style="max-width: 50%;margin: auto;">
     <h2>Logowanie</h2>
     <form action="POST">
+        {% csrf_token %}
         {% bootstrap_form form %}
         <button type="submit" class="btn btn-primary">Zaloguj</button>
     </form>
