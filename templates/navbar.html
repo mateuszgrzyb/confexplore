@@ -9,32 +9,28 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   {% endcomment %}
-
     <ul class="navbar-nav w-100">
       <li class="mx-auto">
         <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
-          <input class="form-control mr-sm-2" type="search" name ='q' placeholder="Wyszukaj wydarzenie" aria-label="Wyszukaj" >
-
-
-
-      <select name="type" id="search-type" class="form-select">
-          <option value="-1">--Kategoria--</option>
-      {% for type in types %}
-          <option value="{{ type.id }}">{{ type.name }}</option>
-      {% endfor %}
-      </select>
-      <select name="city" id="search-city" class="form-select">
-          <option value="-1">--Miasto--</option>
-      {% for city in cities %}
-          <option value="{{ city.id }}">{{ city.name }}</option>
-      {% endfor %}
-      </select>
-          <button class="btn btn-secondary m-1" type="submit">Wyszukaj</button>
+          <input class="form-control mr-sm-2" style="width: 500px; height: 44px" type="search" name ='q' placeholder="Wyszukaj wydarzenia" aria-label="Wyszukaj" >
+            <select name="type" id="search-type" style="height: 44px; margin-right: 5px;" class="btn btn-light form-select">
+              <option value="-1">Kategoria</option>
+                {% for type in types %}
+              <option value="{{ type.id }}">{{ type.name }}</option>
+                {% endfor %}
+            </select>
+            <select name="city" id="search-city" style="height: 44px" class="btn btn-light form-select">
+              <option value="-1">Miasto</option>
+                {% for city in cities %}
+              <option value="{{ city.id }}">{{ city.name }}</option>
+                {% endfor %}
+          </select>
+          <button class="btn btn-primary m-1" style="width: 100px; height: 44px" type="submit">Wyszukaj</button>
         </form>
       </li>
-      <li class="nav-item dropdown m-1 ml-auto">
-        <a class="btn btn-secondary dropdown-toggle" href="#" id="usermenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Użytkownik
+      <li class="nav-item dropdown m-1 ml-auto" >
+        <a class="btn btn-secondary dropdown-toggle" href="#" id="usermenu" role="button" data-toggle="dropdown" style="height: 44px" aria-haspopup="true" aria-expanded="false">
+          Konto
         </a>
         <div class="dropdown-menu" aria-labelledby="usermenu">
          {% if user_type == "U" %}
