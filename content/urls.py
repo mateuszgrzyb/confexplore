@@ -21,6 +21,5 @@ urlpatterns = [
     path('eventPreview/buyHowMany/', buyHowManyView.as_view(), name='buyHowMany'),
     path('eventPreview/buyHowMany/buyWhat/', buyWhatView.as_view(), name='buyWhat'),
     path('eventPreview/buyHowMany/buyWhat/transaction/', transactionView.as_view(), name='transaction'),
-
     path('addevent/', AddEventView.as_view(), name='add_event'),
 ]

@@ -1,45 +1,41 @@
-{% extends 'main.html' %}
+{% extends "main.html" %}
 {% block content %}
-<div style="text-align: center;">
-    <h2>wydarzenia na jakie jesteś zapisany </h2>
-</div>
-<!-- TODO przenieść te style do pliku css -->
-<!-- TODO dodać odstęp od tytułu do treści -->
-<div class="container ">
-    <div class="row border-bottom" style="border-width:3px !important">
-        <div class="col">
-            <p> tu powinno być zdjęcie</p>
-        </div>
-
-        <div class="col-6">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate tempus ipsum aliquam convallis.
-                Nunc at pulvinar leo, vitae tempus metus. Mauris mattis justo sit amet mauris cursus elementum. Aliquam
-                sit amet nibh vel ante pretium viverra. Phasellus ultricies at erat nec pulvinar. Nunc vel dui vel purus
-                malesuada posuere quis at augue. Curabitur non ipsum vel augue pellentesque molestie vitae vel ante.
-                Curabitur tincidunt maximus elit, ut vestibulum massa convallis vitae. Morbi vitae ipsum elit. Nulla
-                eget tincidunt augue, at pellentesque nibh. Vestibulum ac lacus varius ex semper scelerisque ac et
-                purus. Pellentesque viverra tincidunt dapibus. Nunc gravida ultrices dui nec pretium. Proin in mollis
-                urna. Nulla vel leo enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-            <div style="text-align: center;">
-                <button type="button" class="btn btn-primary">Pokaż więcej</button>
-                <button type="button" class="btn btn-primary">Anuluj bilet</button>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="jumbotron">
-                cena: 20 zł <br>
-                <br>
-                data: 20 zł <br>
-                <br>
-                lokalizacja: 20 zł <br>
-                <br>
-            </div>
-        </div>
+<div class="container m-5">
+    <div style="text-align: center;">
+        <h2>Wydarzenia, na jakie jesteś zapisany(a):</h2>
     </div>
+{% for event in events %}
+
+<div class="row">
+         <div class="col-8">
+        <article class="media content-section bg-light">
+
+          <div class="media-body m-5">
+            <div class="article-metadata">
+              <small class="text-muted">{{ event.date }}</small>
+            </div>
+            <h2><a class="article-title" href='eventPreview/'>{{ event.name }}</a></h2>
+
+            <h5><p class="text-secondary">Lokalizacja: {{ event.localization.name }}, Kategoria: {{ event.type.name }}</p></h5>
+                        </div>
+                </article>
+             <a type="button" class="btn btn-primary" href="https://drive.google.com/file/d/1BlUzzAEnf7a9fJUrnFg8XuOu1q8BVJiD/view?usp=sharing">Pobierz bilet (.pdf)</a>
+          </div>
+
+               <div class="col-2">
+                   <div class="jumbotron">
+              <p class="text-dark">Status rezerwacji:</p>
+               <p class="text-success">Opłacona</p>
+
+                   </div>
+              </div>
 </div>
 
 
+
+
+
+
+    {% endfor %}
+   </div>
 {% endblock content %}

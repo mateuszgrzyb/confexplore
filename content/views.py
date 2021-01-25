@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import FormView
+from django.views.generic import FormView, ListView
 
 from .forms import AddEventForm
 from .models import Event, City, Type
@@ -63,9 +63,12 @@ class SearchView(View):
         })
 
 
-class TicketOwnedView(View):
+class TicketOwnedView(ListView):
     def get(self, request: HttpRequest):
-        return render(request, 'content/ticketOwned.html')
+        context = {
+            'events': Event.objects.all()
+        }
+        return render(request, 'content/ticketOwned.html', context)
 
     def post(self, request: HttpRequest):
         keys = ['name', 'type', 'city']
@@ -80,6 +83,7 @@ class YourEventsView(View):
             'events': Event.objects.all()
         }
         return render(request, 'content/yourEvents.html', context)
+
 
     def post(self, request: HttpRequest):
         keys = ['name', 'type', 'city']
