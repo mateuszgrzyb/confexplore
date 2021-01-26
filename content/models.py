@@ -32,6 +32,7 @@ class Event(models.Model):
     price = models.IntegerField(default=0)
     photo = models.ImageField(upload_to='images/',default='default.jpg') 
     schedule = models.FileField(upload_to ='schedule/', default = 'default.pdf' )
+    accepted = models.BooleanField(default=False)
 
 
 class Ticket(models.Model):
