@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import AnonymousUser
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render
 
@@ -135,7 +136,6 @@ class AddEventView(RoleRequiredMixin, FormView):
     success_url = reverse_lazy('home')
 
     def form_valid(self, form: form_class):
-        organizer = self.request.user
         event: Event = Event.objects.create(**form.cleaned_data)
-        organizer.profile.organizer_role.event_set.add(event)
+        self.request.user.profile.organizer_role.event_set.add(event)
         return super().form_valid(form)

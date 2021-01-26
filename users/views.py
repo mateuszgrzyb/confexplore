@@ -59,7 +59,7 @@ class RoleRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     role = 'A'
 
     def test_func(self):
-        return self.request.user.role_name == self.role
+        return self.request.user.profile.role_name == self.role
 
 
 class ManageUsersView(
