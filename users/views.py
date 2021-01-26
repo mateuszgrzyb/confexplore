@@ -3,6 +3,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
@@ -22,6 +23,9 @@ from django.views.generic import TemplateView
 from .forms import UserRegisterForm
 from .forms import emailUpdateForm
 from .forms import usernameUpdateForm
+from .models import Administrator
+from .models import NormalUser
+from .models import Organizer
 from .models import Profile
 
 
@@ -30,16 +34,47 @@ class LoginView(BaseLoginView):
 
 
 def register_view(request):
+
+    switch = {
+        'A': Administrator,
+        'O': Organizer,
+        'U': NormalUser
+    }
+
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            user.refresh_from_db()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
+            #user = form.save()
+            #user.refresh_from_db()
+            #username = form.cleaned_data['username']
+            #messages.success(request, f'Account created for {username}!')
+            #login(request, user)
+            #request.user.profile.role_name = form.cleaned_data.get('rodzaj_użytkownika')
+            #request.user.profile.save()
+
+            username = form.cleaned_data['username'],
+            email = form.cleaned_data['email'],
+            password = form.cleaned_data['password1']
+            role_name = form.cleaned_data['rodzaj_użytkownika']
+
+            user = User.objects.create_user(
+                username=username,
+                email=email,
+                password=password,
+            )
+
+            profile = Profile.objects.create(
+                django_user=user,
+                name=username,
+                role_name=role_name,
+            )
+
+            switch[role_name].objects.create(
+                profile=profile
+            )
+
             login(request, user)
-            request.user.profile.role_name = form.cleaned_data.get('rodzaj_użytkownika')
-            request.user.profile.save()            
+
             return redirect('home')
     else:
         form = UserRegisterForm()
