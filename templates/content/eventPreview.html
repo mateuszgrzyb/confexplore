@@ -10,9 +10,9 @@
 <div class="container">
     
     <div class="row ">
-        <!--<div class="col">
-            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/379737e3-a4e3-4789-ad0f-84d5ae875343/decxmti-e3a6a1a7-0514-40c3-8127-77f2208e560c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMzc5NzM3ZTMtYTRlMy00Nzg5LWFkMGYtODRkNWFlODc1MzQzXC9kZWN4bXRpLWUzYTZhMWE3LTA1MTQtNDBjMy04MTI3LTc3ZjIyMDhlNTYwYy5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.N2z3A5lapRJGAX5S5jPRzCpgbHtTKEa2dRnhzFpC8QI"></img>
-        </div>-->
+        <div class="col">
+            <img src = "{{event.photo.url}}" class="img-fluid">
+                </div>
 
         <div class="col-9">
                 <div>
@@ -23,7 +23,13 @@
             </p>
             <div style="text-align: center;">
                 <a type="button" class="btn btn-secondary" href={{ object.schedule.url }}><span class="btn-label"><i class="fa fa-arrow-down"></i></span> Pobierz harmonogram</a>
-                <a type="button" class="btn btn-primary" href="buyHowMany/"><span class="btn-label"><i class="fa fa-shopping-cart"></i></span> Kup Bilet</a>
+                {% if user.is_authenticated %}
+                            <!-- {% if  user_type == "U" %} -->
+                    <a type="button" class="btn btn-primary" href="buyHowMany/"><span class="btn-label"><i class="fa fa-shopping-cart"></i></span> Kup Bilet</a>
+                    <!-- {%endif%} -->
+                {% else %}
+                    <a type="button" class="btn btn-primary" href="{% url 'login' %}"><span class="btn-label"><i class="fa fa-shopping-cart"></i></span> Zaloguj się aby kupić bilet </a>
+                {%endif%}
             </div>
         </div>
 
