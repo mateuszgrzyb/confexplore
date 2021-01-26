@@ -30,6 +30,7 @@ class Event(models.Model):
     type = models.ForeignKey('Type', on_delete=models.CASCADE, default="Ogólna")
     date = models.CharField(max_length=30, default='1 stycznia')
     price = models.IntegerField(default=0)
+    photo = models.ImageField(upload_to='images/',default='default.jpg') 
 
 
 class Ticket(models.Model):

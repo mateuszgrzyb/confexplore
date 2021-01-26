@@ -7,7 +7,7 @@
     <p class="text-dark" style="text-align: center;">Dodaj wydarzenie:</p>
   </h2>
   {% csrf_token %}
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% bootstrap_form form %}
     <div class="row">
