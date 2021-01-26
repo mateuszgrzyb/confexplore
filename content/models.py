@@ -23,11 +23,13 @@ class Event(models.Model):
     #        event = models.ForeignKey('Event', on_delete=models.CASCADE)
     #        date = models.DateTimeField()
 
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=100, default='konferencja')
     info = models.TextField(blank=True)
     localization = models.ForeignKey('City', on_delete=models.CASCADE, default="Warszawa")
     type = models.ForeignKey('Type', on_delete=models.CASCADE, default="Ogólna")
     date = models.CharField(max_length=30, default='1 stycznia')
+    price = models.IntegerField(default=0)
 
 
 class Ticket(models.Model):
