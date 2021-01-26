@@ -1,4 +1,6 @@
 from django.contrib.auth import logout,login
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.views import LoginView as BaseLoginView
@@ -42,18 +44,6 @@ def register_view(request):
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
-
-
-# class RegisterView(CreateView):
-#     pass
-# form_class = RegistrationForm
-# success_url = reverse_lazy('home')
-# template_name = 'users/register.html'
-#
-# def form_valid(self, form: RegistrationForm) -> HttpResponseRedirect:
-#     valid = super(RegisterView, self).form_valid(form)
-#     return valid
-
 
 class LogoutView(View):
     def get(self, request: HttpRequest) -> HttpResponse:
@@ -103,3 +93,19 @@ def accountSettingView(request):
     else:
             form = usernameUpdateForm(instance=request.user)
     return render(request, 'users/accountSetting.html',{'form' : form})
+
+def changePassword(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('changePassword')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'users/changePassword.html', {
+        'form': form
+    })

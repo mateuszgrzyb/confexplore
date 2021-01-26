@@ -7,6 +7,7 @@ from users.views import ManageUsersView
 from users.views import register_view
 from users.views import ResetPasswordView
 from users.views import accountSettingView
+from users.views import changePassword
 
 urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
@@ -16,4 +17,5 @@ urlpatterns = [
     path('manage_users/', ManageUsersView.as_view(), name='manage_users'),
     path('confirm_user/', ConfirmUserView.as_view(), name='confirm_user'),
     path('accountSetting/', accountSettingView, name='accountSetting'),
+    path('changePassword/', changePassword, name='changePassword'),
 ]

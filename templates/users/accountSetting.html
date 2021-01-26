@@ -1,13 +1,16 @@
 {% extends "main.html" %}
 {% block content %}
 {% load bootstrap4 %}
+<a href="/" class="btn btn-secondary" role="button"><span class="btn-label"><i class="fa fa-arrow-left"></i></span> Powrót</a><br><br>
 <div class = "jumbotron">
     <form   method="post">
         {% csrf_token %}
         {% bootstrap_form form%}
         <button type="submit" class="btn btn-primary" >Zapisz</button>
     </form>
+    <a href = "{% url 'changePassword' %}" class="btn btn-primary"  role="button"  >zmień hasło</a>
 </div>
+
 
 
 {% endblock content %}
