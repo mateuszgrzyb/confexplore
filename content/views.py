@@ -135,8 +135,12 @@ class AddEventView(RoleRequiredMixin, FormView):
     success_url = reverse_lazy('home')
 
     def form_valid(self, form: form_class):
-        event: Event = Event.objects.create(**form.cleaned_data)
-        self.request.user.profile.organizer_role.event_set.add(event)
+        organizer = self.request.user.profile.organizer_role
+
+        event: Event = Event.objects.create(
+            **(form.cleaned_data | {'organizer': organizer})
+        )
+        organizer.event_set.add(event)
         return super().form_valid(form)
 
 
