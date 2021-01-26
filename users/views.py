@@ -37,6 +37,16 @@ def register_view(request):
             user.refresh_from_db()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}!')
+            role_type = form.cleaned_data.get('rodzaj_użytkownika')
+            # if role_type == 'U':
+            #     profile = Profile.objects.create(...)
+            #     NormalUser.objects.create(profile=user)
+            # elif role_type == 'O':
+            #     profile = Profile.objects.create(...)
+            #     Organizer.objects.create(profile=profile)
+            # elif(role_type == 'V'):
+            #     profile = Profile.objects.create(...)
+            #     Volunteer.objects.create(profile=profile)
             login(request, user)
             request.user.profile.role_name = form.cleaned_data.get('rodzaj_użytkownika')
             request.user.profile.save()            
