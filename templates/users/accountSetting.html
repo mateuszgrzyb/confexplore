@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block content %}
+{% load bootstrap4 %}
+<div class = "jumbotron">
+    <form   method="post">
+        {% csrf_token %}
+        {% bootstrap_form form%}
+        <button type="submit" class="btn btn-primary" >Zapisz</button>
+    </form>
+</div>
+
+
+{% endblock content %}

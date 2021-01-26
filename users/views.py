@@ -18,6 +18,8 @@ from django.contrib import messages
 from django.views.generic import TemplateView
 
 from .forms import UserRegisterForm
+from .forms import emailUpdateForm
+from .forms import usernameUpdateForm
 from .models import Profile
 
 
@@ -90,3 +92,14 @@ class ConfirmUserView(
         r.blocked = not r.blocked
         r.save()
         return redirect('manage_users')
+
+def accountSettingView(request):
+    if request.method == 'POST':
+        form = usernameUpdateForm(request.POST,request.FILES,instance=request.user.profile) 
+        if  form.is_valid():
+            form.save()
+            messages.success(request,'Your Profile has been updated!')
+            return redirect('home')
+    else:
+            form = usernameUpdateForm(instance=request.user)
+    return render(request, 'users/accountSetting.html',{'form' : form})
