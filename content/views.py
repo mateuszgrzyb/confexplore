@@ -81,7 +81,7 @@ class TicketOwnedView(ListView):
 class YourEventsView(View):
     def get(self, request: HttpRequest):
         context = {
-            'events': Event.objects.all()
+            'events': Event.objects.filter(accepted=False)
         }
         return render(request, 'content/yourEvents.html', context)
 
@@ -95,13 +95,11 @@ class YourEventsView(View):
 
 class EventsToAcceptView(View):
     def get(self, request: HttpRequest):
-        return render(request, 'content/eventsToAccept.html')
+        context = {
+                'events': Event.objects.all()
+        }
+        return render(request, 'content/eventsToAccept.html',context )
 
-    def post(self, request: HttpRequest):
-        keys = ['name', 'type', 'city']
-        kwars = {key: request.POST[key] for key in keys}
-        html = "\n".join(f'<p>{k}: \"{v}\"' for k, v in kwars.items())
-        return HttpResponse(html)
 
 
 class eventPreviewView(DetailView):

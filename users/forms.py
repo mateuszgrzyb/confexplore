@@ -8,6 +8,7 @@ ROLE =(
     ("U", "Uczestnik"), 
     ("V", "Wolontariusz"), 
     ("O", "Organizator"), 
+    ("A", "admin"), 
 )
 
 class UserRegisterForm(UserCreationForm):
