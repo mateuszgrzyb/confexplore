@@ -1,10 +1,11 @@
 {% extends 'main.html' %}
 {% block content %}
 
-<nav class="nav m-5">
-  <p class="text-secondary mr-1" >Konferencja x > </p>
-  <p class="text-primary mr-1" >Wybierz Liczbę biletów > </p>
-  <p class="text-secondary mr-1">Wybierz rodzaje biletów > </p>
+<nav class="nav m-3">
+  <p class="text-secondary mr-1" >Strona główna > </p>
+  <p class="text-secondary mr-1" >{{ object.name }} > </p>
+  <p class="text-primary mr-1" >Ilość biletów > </p>
+  <p class="text-secondary mr-1">Rodzaj biletów > </p>
   <p class="text-secondary mr-1" >Opłać bilety</p>
 </nav>
 
@@ -15,7 +16,6 @@
 
       <div class="jumbotron">
           <select class="form-control form-control-lg">
-          <option>0</option>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -28,7 +28,7 @@
 
  <div class="row">
     <div class="col-auto mr-auto">
-      <a class="btn btn-light btn-lg" href="/eventPreview/" role="button">Anuluj</a>
+      <a class="btn btn-light btn-lg" href="/eventPreview/{{ object.id }}/" role="button">Anuluj</a>
     </div>
     <div class="col-auto">
        <a class="btn btn-primary btn-lg " href="buyWhat/" role="button">Dalej</a>

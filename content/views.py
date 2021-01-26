@@ -108,19 +108,19 @@ class eventPreviewView(DetailView):
     template_name = 'content/eventPreview.html'
 
 
-class buyHowManyView(View):
-    def get(self, request: HttpRequest):
-        return render(request, 'content/buyHowMany.html')
+class buyHowManyView(DetailView):
+    model = Event
+    template_name = 'content/buyHowMany.html'
 
 
-class buyWhatView(View):
-    def get(self, request: HttpRequest):
-        return render(request, 'content/buyWhat.html')
+class buyWhatView(DetailView):
+    model = Event
+    template_name = 'content/buyWhat.html'
 
 
-class transactionView(View):
-    def get(self, request: HttpRequest):
-        return render(request, 'content/transaction.html')
+class transactionView(DetailView):
+    model = Event
+    template_name = 'content/transaction.html'
 
 
 class AddEventView(FormView):

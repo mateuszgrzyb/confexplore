@@ -1,23 +1,23 @@
 {% extends 'main.html' %}
 {% block content %}
 
-<nav class="nav m-5">
-  <p class="text-secondary mr-1" >Konferencja x > </p>
-  <p class="text-secondary mr-1" >Wybierz Liczbę biletów > </p>
-  <p class="text-primary mr-1">Wybierz rodzaje biletów > </p>
+<nav class="nav m-3">
+  <p class="text-secondary mr-1" >Strona główna > </p>
+  <p class="text-secondary mr-1" >{{ object.name }} > </p>
+  <p class="text-secondary mr-1" >Ilość biletów > </p>
+  <p class="text-primary mr-1">Rodzaj biletów > </p>
   <p class="text-secondary mr-1" >Opłać bilety</p>
 </nav>
 
 <h3 class="text-center m-5">Wybierz rodzaje biletów</h3>
 
 <div class="container ">
-
       <div class="jumbotron">
           <select class="form-control form-control-lg">
               <p class="text-center m-1">Bilet 1</p>
-          <option>Bilet Ulgowy [cena]</option>
-              <option>Bilet Studencki [cena]</option>
-              <option>Bilet Normalny [cena]</option>
+              <option>Bilet Normalny [{{ object.price }} zł]</option>
+              <option>Bilet Ulgowy [{{ object.price }} zł]</option>
+              <option>Bilet Studencki [{{ object.price }} zł]</option>
         </select>
 
 </div>
@@ -26,7 +26,7 @@
 
  <div class="row">
     <div class="col-auto mr-auto">
-      <a class="btn btn-light btn-lg" href="/eventPreview/buyHowMany/" role="button">Powrót</a>
+      <a class="btn btn-light btn-lg" href="/eventPreview/{{ object.id }}/buyHowMany/" role="button">Powrót</a>
     </div>
     <div class="col-auto">
        <a class="btn btn-primary btn-lg " href="transaction/" role="button">Dalej</a>

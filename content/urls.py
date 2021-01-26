@@ -18,8 +18,8 @@ urlpatterns = [
     path('yourEvents/', YourEventsView.as_view(), name='yourEvents'),
     path('eventsToAccept/', EventsToAcceptView.as_view(), name='eventsToAccept'),
     path('eventPreview/<int:pk>/', eventPreviewView.as_view(), name='eventPreview'),
-    path('eventPreview/buyHowMany/', buyHowManyView.as_view(), name='buyHowMany'),
-    path('eventPreview/buyHowMany/buyWhat/', buyWhatView.as_view(), name='buyWhat'),
-    path('eventPreview/buyHowMany/buyWhat/transaction/', transactionView.as_view(), name='transaction'),
+    path('eventPreview/<int:pk>/buyHowMany/', buyHowManyView.as_view(), name='buyHowMany'),
+    path('eventPreview/<int:pk>/buyHowMany/buyWhat/', buyWhatView.as_view(), name='buyWhat'),
+    path('eventPreview/<int:pk>/buyHowMany/buyWhat/transaction/', transactionView.as_view(), name='transaction'),
     path('addevent/', AddEventView.as_view(), name='add_event'),
 ]
