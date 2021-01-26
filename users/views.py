@@ -55,9 +55,11 @@ class ResetPasswordView(View):
     pass
 
 
-class AdminRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
+class RoleRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
+    role = 'A'
+
     def test_func(self):
-        return self.request.user.role_name == 'A'
+        return self.request.user.role_name == self.role
 
 
 class ManageUsersView(

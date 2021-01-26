@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 from users.models import NormalUser
+from users.models import Organizer
 
 
 class City(models.Model):
@@ -32,6 +33,8 @@ class Event(models.Model):
     price = models.IntegerField(default=0)
     photo = models.ImageField(upload_to='images/',default='default.jpg') 
     schedule = models.FileField(upload_to ='schedule/', default = 'default.pdf' )
+    accepted = models.BooleanField(default=False)
+    organizer = models.ForeignKey(Organizer, on_delete=models.CASCADE)
 
 
 class Ticket(models.Model):

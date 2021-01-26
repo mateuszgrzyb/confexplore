@@ -5,40 +5,32 @@
 
 <div class="container ">
     <div class="row border-bottom" style="border-width:3px !important">
-        <div class="col">
-            <p> tu powinno być zdjęcie</p>
-        </div>
-
-        <div class="col-6">
-            <h3>To jest tytuł wydarzenia</h3>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate tempus ipsum aliquam convallis.
-                Nunc at pulvinar leo, vitae tempus metus. Mauris mattis justo sit amet mauris cursus elementum. Aliquam
-                sit amet nibh vel ante pretium viverra. Phasellus ultricies at erat nec pulvinar. Nunc vel dui vel purus
-                malesuada posuere quis at augue. Curabitur non ipsum vel augue pellentesque molestie vitae vel ante.
-                Curabitur tincidunt maximus elit, ut vestibulum massa convallis vitae. Morbi vitae ipsum elit. Nulla
-                eget tincidunt augue, at pellentesque nibh. Vestibulum ac lacus varius ex semper scelerisque ac et
-                purus. Pellentesque viverra tincidunt dapibus. Nunc gravida ultrices dui nec pretium. Proin in mollis
-                urna. Nulla vel leo enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-            <div style="text-align: center;">
-                <button type="button" class="btn btn-primary">Zatwierdź</button>
-                <button type="button" class="btn btn-primary">Odrzuć</button>
-                <button type="button" class="btn btn-primary">Anuluj </button>
+        {% for event in events %}
+        <article class="media content-section bg-light">
+            <div class="media-body">
+              <div class="row">
+                <div class="col-3">
+                  <img src="{{event.photo.url}}" class="img-fluid">
+                </div>
+                <div class="col-6">
+                  <div class="article-metadata">
+                    <small class="text-muted">{{ event.date }}</small>
+                  </div>
+                  <h2><a class="article-title" href="/eventPreview/{{ event.id}}/">{{ event.name }}</a></h2>
+                  <h5>
+                    <p class="text-secondary">{{ event.type.name }}, {{ event.localization.name }}</p>
+                  </h5>
+                  <p class="article-content">{{ event.info }}</p>
+                </div>
+              </div>
             </div>
-        </div>
-
-        <div class="col">
-            <div class="jumbotron">
-                cena: 20 zł <br>
-                <br>
-                data: 20 zł <br>
-                <br>
-                lokalizacja: 20 zł <br>
-                <br>
-            </div>
-        </div>
+        </article>
     </div>
+        <div class = "row" style="text-align: center; padding-bottom: 5%;">
+            <div class = "col"><button type="button" class="btn btn-primary">Zatwierdź</button></div>
+            <div class = "col"><button type="button" class="btn btn-primary">Odrzuć</button></div>
+          </div>
+        {% endfor %}
 </div>
 
 
