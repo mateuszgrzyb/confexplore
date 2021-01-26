@@ -2,46 +2,35 @@
 {% block content %}
 <div style="padding-bottom: 10%;"></div>
 
-<button type="button" class="btn btn-light">< Powrót do wyników wyszukiwania</button>
+<button type="button" class="btn btn-secondary" href='home.html'><span class="btn-label"><i class="fa fa-arrow-left"></i></span> Powrót</button><br><br>
 <div class="container">
-
+    
     <div class="row ">
-        <div class="col">
+        <!--<div class="col">
             <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/379737e3-a4e3-4789-ad0f-84d5ae875343/decxmti-e3a6a1a7-0514-40c3-8127-77f2208e560c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMzc5NzM3ZTMtYTRlMy00Nzg5LWFkMGYtODRkNWFlODc1MzQzXC9kZWN4bXRpLWUzYTZhMWE3LTA1MTQtNDBjMy04MTI3LTc3ZjIyMDhlNTYwYy5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.N2z3A5lapRJGAX5S5jPRzCpgbHtTKEa2dRnhzFpC8QI"></img>
-        </div>
+        </div>-->
 
-        <div class="col-6">
+        <div class="col-9">
                 <div>
-        <h2> II Konferencja Medyczna</h2>
+        <h2>{{ object.name }}</h2>
     </div>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate tempus ipsum aliquam convallis.
-                Nunc at pulvinar leo, vitae tempus metus. Mauris mattis justo sit amet mauris cursus elementum. Aliquam
-                sit amet nibh vel ante pretium viverra. Phasellus ultricies at erat nec pulvinar. Nunc vel dui vel purus
-                malesuada posuere quis at augue. Curabitur non ipsum vel augue pellentesque molestie vitae vel ante.
-                Curabitur tincidunt maximus elit, ut vestibulum massa convallis vitae. Morbi vitae ipsum elit. Nulla
-                eget tincidunt augue, at pellentesque nibh. Vestibulum ac lacus varius ex semper scelerisque ac et
-                purus. Pellentesque viverra tincidunt dapibus. Nunc gravida ultrices dui nec pretium. Proin in mollis
-                urna. Nulla vel leo enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                {{ object.info }}
             </p>
             <div style="text-align: center;">
-                <button type="button" class="btn btn-secondary">Pokaż harmonogram</button>
-                <a type="button" class="btn btn-primary" href="buyHowMany/">Kup Bilet</a>
+                <button type="button" class="btn btn-secondary"><span class="btn-label"><i class="fa fa-arrow-down"></i></span> Pobierz harmonogram</button>
+                <a type="button" class="btn btn-primary" href="buyHowMany/"><span class="btn-label"><i class="fa fa-shopping-cart"></i></span> Kup Bilet</a>
             </div>
         </div>
 
-        <div class="col-2">
+        <div class="col-3">
             <div class="jumbotron">
-                <div style="text-align: center;">
-                    <h5>Informacje</h5>
+                <div style="text-align: left;">
+                    <h5>O wydarzeniu:</h5><br>
                 </div>
-
-                cena: 20 zł <br>
-                <br>
-                data: 18-19 lipca <br>
-                <br>
-                lokalizacja: Wrocław <br>
-                <br>
+                Cena biletu: {{ object.price }} zł <br>
+                Data: {{ object.date }} <br>
+                Miasto: {{ object.localization }} <br>
             </div>
         </div>
     </div>

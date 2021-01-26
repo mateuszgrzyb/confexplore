@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import FormView, ListView
+from django.views.generic import FormView, ListView, DetailView
 
 from .forms import AddEventForm
 from .models import Event, City, Type
@@ -103,15 +103,9 @@ class EventsToAcceptView(View):
         return HttpResponse(html)
 
 
-class eventPreviewView(View):
-    def get(self, request: HttpRequest):
-        return render(request, 'content/eventPreview.html')
-
-    def post(self, request: HttpRequest):
-        keys = ['name', 'type', 'city']
-        kwars = {key: request.POST[key] for key in keys}
-        html = "\n".join(f'<p>{k}: \"{v}\"' for k, v in kwars.items())
-        return HttpResponse(html)
+class eventPreviewView(DetailView):
+    model = Event
+    template_name = 'content/eventPreview.html'
 
 
 class buyHowManyView(View):
