@@ -8,16 +8,23 @@
 <a href="/" class="btn btn-secondary" role="button"><span class="btn-label"><i class="fa fa-arrow-left"></i></span> Powrót</a><br><br>
 <h4><p class="text-dark">Znaleziono {{ events_count }} rezultatów</p></h4>
     {% for event in events %}
-        <article class="media content-section bg-light">
-          <div class="media-body">
+    <article class="media content-section bg-light">
+      <div class="media-body">
+        <div class="row">
+          <div class = col-3>
+            <img src = "{{event.photo.url}}" class="img-fluid">
+          </div>
+          <div class = col-6>
             <div class="article-metadata">
               <small class="text-muted">{{ event.date }}</small>
             </div>
-            <h2><a class="article-title" href="/eventPreview/{{ event.id}}/">{{ event.name }}</a></h2>
+            <h2><a class="article-title" href='eventPreview/{{ event.id }}/'>{{ event.name }}</a></h2>
             <h5><p class="text-secondary">{{ event.type.name }}, {{ event.localization.name }}</p></h5>
             <p class="article-content">{{ event.info }}</p>
           </div>
-        </article>
+        </div>
+      </div>
+    </article>
     {% endfor %}
  </div>
 {% endblock content %}

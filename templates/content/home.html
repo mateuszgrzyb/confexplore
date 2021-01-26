@@ -25,24 +25,23 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
     {% for event in events %}
-
-
         <article class="media content-section bg-light">
-
           <div class="media-body">
-            <div class="article-metadata">
-              <small class="text-muted">{{ event.date }}</small>
+            <div class="row">
+              <div class = col-3>
+                <img src = "{{event.photo.url}}" class="img-fluid">
+              </div>
+              <div class = col-6>
+                <div class="article-metadata">
+                  <small class="text-muted">{{ event.date }}</small>
+                </div>
+                <h2><a class="article-title" href='eventPreview/{{ event.id }}/'>{{ event.name }}</a></h2>
+                <h5><p class="text-secondary">{{ event.type.name }}, {{ event.localization.name }}</p></h5>
+                <p class="article-content">{{ event.info }}</p>
+              </div>
             </div>
-            <h2><a class="article-title" href='eventPreview/{{ event.id }}/'>{{ event.name }}</a></h2>
-            <h5><p class="text-secondary">{{ event.type.name }}, {{ event.localization.name }}</p></h5>
-            <p class="article-content">{{ event.info }}</p>
           </div>
-
         </article>
-
-
-
     {% endfor %}
 {% endblock content %}

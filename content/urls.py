@@ -23,3 +23,11 @@ urlpatterns = [
     path('eventPreview/<int:pk>/buyHowMany/buyWhat/transaction/', transactionView.as_view(), name='transaction'),
     path('addevent/', AddEventView.as_view(), name='add_event'),
 ]
+
+from django.urls import path 
+from django.conf import settings 
+from django.conf.urls.static import static
+
+if settings.DEBUG: 
+        urlpatterns += static(settings.MEDIA_URL, 
+                              document_root=settings.MEDIA_ROOT) 
