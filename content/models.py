@@ -31,6 +31,7 @@ class Event(models.Model):
     date = models.CharField(max_length=30, default='1 stycznia')
     price = models.IntegerField(default=0)
     photo = models.ImageField(upload_to='images/',default='default.jpg') 
+    schedule = models.FileField(upload_to ='schedule/', default = 'default.pdf' )
 
 
 class Ticket(models.Model):
