@@ -19,12 +19,7 @@ class FAQView(TemplateView):
 
 class RegulaminView(TemplateView):
     template_name = 'misc/regulamin.html'
-    extra_context = {
-        'regulamin': [{
-            'title': f'Title{i}',
-            'list': [f'subpoint{j}' for j in range9]
-        } for i in range9]
-    }
+
 
 
 class KontaktView(TemplateView):

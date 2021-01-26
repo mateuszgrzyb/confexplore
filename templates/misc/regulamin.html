@@ -3,14 +3,23 @@
 <div class="jumbotron mt-5">
   <h2>Regulamin serwisu</h2>
 </div>
-  {% for point in regulamin %}
-    <div class="jumbotron mt-5">
-      <h3>{{ forloop.counter }}. {{ point.title }}</h3>
-      <ol>
-        {% for subpoint in point.list %}
-          <li>{{ subpoint }}</li>
-        {% endfor %}
-      </ol>
+
+    <div class="container mt-5">
+      <div class="jumbotron mt-5 ">
+      <h3>Zasady ogólnie</h3>
+      <p>1.  Przed zakupem biletu użytkownik zobowiązany jest zapoznać się z regulaminem serwisu.</p>
+      <p>2. System udostępnia do sprzedaży Bilety na konferencje naukowe realizowane przez Organizatora. Confexplore nie jest organizatorem konferencji i odpowiada jedynie za poprawność działania Systemu.</p>
     </div>
-  {% endfor %}
+      <div class="jumbotron mt-5 ">
+    <h3>Etapy procesu zakupu biletu</h3>
+      <p>1. Zapoznanie się z regulaminem Systemu.</p>
+      <p>2. Logowanie/rejestracja w Systemie, o ile Użytkownik nie zalogował się wcześniej.</p>
+      <p>3. Dokonanie wyboru Konferencji</p>
+      <p>4. Wybór liczby i rodzaju biletów</p>
+      <p>5. Opłacenie rezerwacji</p>
+      </div>
+
+    </div>
+
+
 {% endblock %}
