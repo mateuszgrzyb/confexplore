@@ -13,12 +13,17 @@
 
 <div class="container ">
       <div class="jumbotron">
+
+          {% for i in num %}
+          <p class="text-dark m">  </p>
+
           <select class="form-control form-control-lg">
-              <p class="text-center m-1">Bilet 1</p>
               <option>Bilet Normalny [{{ object.price }} zł]</option>
               <option>Bilet Ulgowy [{{ object.price }} zł]</option>
               <option>Bilet Studencki [{{ object.price }} zł]</option>
+
         </select>
+            {%endfor%}
 
 </div>
  </div>

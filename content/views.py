@@ -113,11 +113,16 @@ class buyHowManyView(DetailView):
     model = Event
     template_name = 'content/buyHowMany.html'
 
-
 class buyWhatView(DetailView):
-    model = Event
-    template_name = 'content/buyWhat.html'
+    def get(self, request: HttpRequest, pk):
+        num=int(request.GET['howMany'])
 
+        context = {
+            'howMany': request.GET['howMany'],
+
+            'num' : range(num)
+        }
+        return render(request, 'content/buyWhat.html', context)
 
 class transactionView(DetailView):
     model = Event
