@@ -9,6 +9,7 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import FormView, ListView, DetailView
 
+from users.views import RoleRequiredMixin
 from .forms import AddEventForm
 from .models import Event, City, Type
 
@@ -124,11 +125,14 @@ class transactionView(DetailView):
     template_name = 'content/transaction.html'
 
 
-class AddEventView(FormView):
+class AddEventView(RoleRequiredMixin, FormView):
+    role = 'O'
     form_class = AddEventForm
     template_name = 'content/addevent.html'
     success_url = reverse_lazy('home')
 
     def form_valid(self, form: form_class):
-        Event.objects.create(**form.cleaned_data)
+        organizer = self.request.user
+        event: Event = Event.objects.create(**form.cleaned_data)
+        organizer.profile.organizer_role.event_set.add(event)
         return super().form_valid(form)
