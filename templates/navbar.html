@@ -35,20 +35,23 @@
           <span class="btn-label"><i class="fa fa-user"></i></span> Zarządzanie kontem <span class="btn-label"><i class="fa fa-caret-down"></i></a>
         <div class="dropdown-menu" aria-labelledby="usermenu">
           {% if user.is_authenticated %}
-                      {% if user_type == "U" %}
-            <a class="dropdown-item" href="{% url 'ticketOwned' %} ">Moje wydarzenia</a>
-            <a class="dropdown-item" href="{% url 'accountSetting' %}">Ustawienia konta</a>
-            <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
-          {% elif user_type == "V" %}
-          {% elif user_type == "O" %}
-          <a class="dropdown-item" href="{% url 'yourEvents' %}">Zarządzaj wydarzeniami</a>
-          <a class="dropdown-item" href="{% url 'accountSetting' %}">Ustawienia konta</a>
-            <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
-          {% elif user_type == "A" %}
-            <a class="dropdown-item" href="{% url 'eventsToAccept' %}">Zarządzaj wydarzeniami</a>
-            <a class="dropdown-item" href="#">Zarządzaj użytkownikami</a>
-            <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
-            {%endif%}
+            {% if user_type == "U" %}
+              <a class="dropdown-item" href="{% url 'ticketOwned' %} ">Moje wydarzenia</a>
+              <a class="dropdown-item" href="{% url 'accountSetting' %}">Ustawienia konta</a>
+              <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
+            {% elif user_type == "V" %}
+              <a class="dropdown-item" href="{% url 'yourEvents' %}">Zarządzaj wydarzeniami</a>
+              <a class="dropdown-item" href="{% url 'accountSetting' %}">Ustawienia konta</a>
+              <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
+            {% elif user_type == "O" %}
+              <a class="dropdown-item" href="{% url 'yourEvents' %}">Zarządzaj wydarzeniami</a>
+              <a class="dropdown-item" href="{% url 'accountSetting' %}">Ustawienia konta</a>
+              <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
+            {% elif user_type == "A" %}
+              <a class="dropdown-item" href="{% url 'eventsToAccept' %}">Zarządzaj wydarzeniami</a>
+              <a class="dropdown-item" href="#">Zarządzaj użytkownikami</a>
+              <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
+            {% endif %}
           {% else %}
             <a class="dropdown-item" href="{% url 'login' %}">Zaloguj się</a>
             <a class="dropdown-item" href="{% url 'register' %}">Zarejestruj się</a>

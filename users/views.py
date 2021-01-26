@@ -27,6 +27,7 @@ from .models import Administrator
 from .models import NormalUser
 from .models import Organizer
 from .models import Profile
+from .models import Volunteer
 
 
 class LoginView(BaseLoginView):
@@ -36,7 +37,7 @@ class LoginView(BaseLoginView):
 def register_view(request):
 
     switch = {
-        'A': Administrator,
+        'V': Volunteer,
         'O': Organizer,
         'U': NormalUser
     }
