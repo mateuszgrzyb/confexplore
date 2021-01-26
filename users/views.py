@@ -44,28 +44,13 @@ def register_view(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            #user = form.save()
-            #user.refresh_from_db()
-            #username = form.cleaned_data['username']
-            #messages.success(request, f'Account created for {username}!')
-            #login(request, user)
-            #request.user.profile.role_name = form.cleaned_data.get('rodzaj_użytkownika')
-            #request.user.profile.save()
+            user = form.save()
 
-            username = form.cleaned_data['username'],
-            email = form.cleaned_data['email'],
-            password = form.cleaned_data['password1']
             role_name = form.cleaned_data['rodzaj_użytkownika']
-
-            user = User.objects.create_user(
-                username=username,
-                email=email,
-                password=password,
-            )
 
             profile = Profile.objects.create(
                 django_user=user,
-                name=username,
+                name=user.username,
                 role_name=role_name,
             )
 
