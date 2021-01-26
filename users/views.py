@@ -1,4 +1,4 @@
-from django.contrib.auth import logout
+from django.contrib.auth import logout,login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.views import LoginView as BaseLoginView
@@ -29,18 +29,13 @@ def register_view(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            user.refresh_from_db()
             username = form.cleaned_data.get('username')
-            if form.cleaned_data.get('rodzaj_użytkownika') == '1':
-                # opcja zwykłego użytkownika 
-                print(1)
-            if form.cleaned_data.get('rodzaj_użytkownika') == '2':
-                # opcja wolontriusza  
-                print(2)
-            if form.cleaned_data.get('rodzaj_użytkownika') == '3':
-                # opcja organizatora  
-                print(1)
             messages.success(request, f'Account created for {username}!')
+            login(request, user)
+            request.user.profile.role_name = form.cleaned_data.get('rodzaj_użytkownika')
+            request.user.profile.save()            
             return redirect('home')
     else:
         form = UserRegisterForm()
