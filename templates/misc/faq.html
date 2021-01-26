@@ -1,14 +1,32 @@
 {% extends 'main.html' %}
 {% block content %}
+<nav class="nav m-3">
+  <p class="text-secondary mr-1" >Strona główna > </p>
+  <p class="text-primary mr-1" >Pomoc</p>
+</nav>
+
+<a href="/" class="btn btn-secondary" role="button"><span class="btn-label"><i class="fa fa-arrow-left"></i></span> Powrót</a><br><br>
+
+<div class="jumbotron mt-5 text-center">
+  <h2>Pomoc - najczęściej zadawane pytania</h2>
+</div>
+
+<div class="container mt-5">
   <div class="jumbotron">
-    <h2>Najczęściej zadawane pytania</h2><br>
+    <h5>Czy mogę kupić bilet jako niezalogowany użytkownik?</h5>
+    <p>Aktualnie nie ma takiej możliwości. Rejestracja jest bardzo szybka.</p>
   </div>
-  <div class="jumbotron mt-5">
-    <h2>FAQ</h2><br>
-    {% for point in faq %}
-      <h4>{{ forloop.counter }}. {{ point.question }}?</h4>
-      <p>{{ point.answer }}</p>
-      <br>
-    {% endfor %}
+  <div class="jumbotron">
+    <h5>Czy wydarzenie X będzie znajdzie się w serwisie?</h5>
+    <p>To zależy od organizatora wydarzenia. Staramy się, aby jak najwięcej wydarzeń znalazło się w serwisie.</p>
   </div>
+  <div class="jumbotron">
+    <h5>Płatność nie powiodła się. Co mogę z tym zrobić?</h5>
+    <p>Proszę skontaktować się z administratorami serwisu obsługującego płątność. Nasz serwis jedynie w niej pośredniczy.</p>
+  </div>
+  <div class="jumbotron">
+    <h5>Czy jeśli wydarzenie zostanie odwołane, dostanę zwrot pieniędzy?</h5>
+    <p>Tak, oczywiście.</p>
+  </div>
+</div>
 {% endblock %}

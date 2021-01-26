@@ -1,7 +1,14 @@
 {% extends "main.html" %}
 {% block content %}
-<div class="container m-5">
-    <div style="text-align: center;">
+<nav class="nav m-3">
+  <p class="text-secondary mr-1" >Strona główna > </p>
+  <p class="text-primary mr-1" >Moje wydarzenia</p>
+</nav>
+
+<a href="/" class="btn btn-secondary" role="button"><span class="btn-label"><i class="fa fa-arrow-left"></i></span> Powrót</a><br><br>
+
+<div class="container m-3">
+    <div class="text-center">
         <h2>Wydarzenia, na jakie jesteś zapisany(a):</h2>
     </div>
 {% for event in events %}
@@ -14,7 +21,7 @@
             <div class="article-metadata">
               <small class="text-muted">{{ event.date }}</small>
             </div>
-            <h2><a class="article-title" href='eventPreview/'>{{ event.name }}</a></h2>
+            <h2><a class="article-title" href='../eventPreview/{{ event.id }}/'>{{ event.name }}</a></h2>
 
             <h5><p class="text-secondary">Lokalizacja: {{ event.localization.name }}, Kategoria: {{ event.type.name }}</p></h5>
                         </div>
@@ -31,12 +38,6 @@
                    </div>
               </div>
 </div>
-
-
-
-
-
-
     {% endfor %}
    </div>
 {% endblock content %}

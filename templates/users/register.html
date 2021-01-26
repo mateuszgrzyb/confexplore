@@ -2,8 +2,16 @@
 {% block content %}
 {% load bootstrap4 %}
 
+<nav class="nav m-3">
+    <p class="text-secondary mr-1" >Strona główna > </p>
+    <p class="text-primary mr-1" >Rejestracja</p>
+</nav>
+
+<a href="/" class="btn btn-secondary" role="button"><span class="btn-label"><i class="fa fa-arrow-left"></i></span> Powrót</a><br><br>
+
 <div style="padding-bottom: 5%;"></div>
 <div class="jumbotron">
+    <h2>Rejestracja</h2>
     <div class="content-section">
         <form method="post">
             {% csrf_token %}

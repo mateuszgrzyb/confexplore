@@ -1,12 +1,23 @@
 {% extends 'main.html' %}
 {% block content %}
-<div class="jumbotron">
-  <h2>Kontakt</h2>
+<nav class="nav m-3">
+  <p class="text-secondary mr-1" >Strona główna > </p>
+  <p class="text-primary mr-1" >Kontakt</p>
+</nav>
+
+<a href="/" class="btn btn-secondary" role="button"><span class="btn-label"><i class="fa fa-arrow-left"></i></span> Powrót</a><br><br>
+
+<div class="jumbotron mt-5 text-center">
+  <h2>Skontaktuj się z nami</h2>
 </div>
-  <div class="jumbotron mt-5">
-    <br>
-    {% for admin in admins %}
-      <p>{{ admin.name }}: {{ admin.email }}</p>
-    {% endfor %}
+
+<div class="container mt-5">
+  <div class="jumbotron">
+    <h5>Infolinia</h5>
+    <p>+48 503 888 898 lub +48 609 990 990</p>
+    <h5>Email</h5>
+    <p>kontakt@confexplore.pl</p>
   </div>
+  </div>
+</div>
 {% endblock %}

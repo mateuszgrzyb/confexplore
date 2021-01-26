@@ -59,7 +59,8 @@ class SearchView(View):
             query['localization__id'] = city
 
         return render(request, 'content/search.html', {
-            'events': Event.objects.filter(**query)
+            'events': Event.objects.filter(**query),
+            'events_count': Event.objects.filter(**query).count()
         })
 
 
