@@ -47,11 +47,11 @@ class Role(models.Model):
         abstract = True
 
 
-@receiver(post_save, sender=User)
-def create_profile_hook(sender, instance: User, created, **kwargs) -> None:
-    if created:
-        profile = Profile.objects.create(django_user=instance, name=instance.username)
-        NormalUser.objects.create(profile=profile)
+# @receiver(post_save, sender=User)
+# def create_profile_hook(sender, instance: User, created, **kwargs) -> None:
+#     if created:
+#         profile = Profile.objects.create(django_user=instance, name=instance.username)
+#         NormalUser.objects.create(profile=profile)
 
 
 class NonAdmin(Role):

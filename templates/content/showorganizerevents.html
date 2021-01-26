@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% block content %}
+  {% for event in object_list %}
+    <p>Name: {{ event.name }}</p>
+    <p>Info: {{ event.info }}</p>
+    <p>Location: {{ event.localization }}</p>
+    <p>Type: {{ event.type }}</p>
+    <p>Date: {{ event.date }}</p>
+    <p>Price: {{ event.price }}</p>
+    <p>Schedule: {{ event.schedule }}</p>
+  {% endfor %}
+{% endblock %}

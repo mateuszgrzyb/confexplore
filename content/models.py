@@ -31,8 +31,8 @@ class Event(models.Model):
     type = models.ForeignKey('Type', on_delete=models.CASCADE, default="Ogólna")
     date = models.CharField(max_length=30, default='1 stycznia')
     price = models.IntegerField(default=0)
-    photo = models.ImageField(upload_to='images/',default='default.jpg') 
-    schedule = models.FileField(upload_to ='schedule/', default = 'default.pdf' )
+    photo = models.ImageField(upload_to='images/', default='default.jpg')
+    schedule = models.FileField(upload_to='schedule/', default='default.pdf')
     accepted = models.BooleanField(default=False)
     organizer = models.ForeignKey(Organizer, on_delete=models.CASCADE)
 

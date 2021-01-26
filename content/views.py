@@ -15,7 +15,6 @@ from .forms import AddEventForm
 from .models import Event, City, Type
 
 
-
 class LoggedView(LoginRequiredMixin, View):
     login_url = reverse_lazy('login')
 
@@ -87,7 +86,6 @@ class YourEventsView(View):
         }
         return render(request, 'content/yourEvents.html', context)
 
-
     def post(self, request: HttpRequest):
         keys = ['name', 'type', 'city']
         kwars = {key: request.POST[key] for key in keys}
@@ -98,10 +96,9 @@ class YourEventsView(View):
 class EventsToAcceptView(View):
     def get(self, request: HttpRequest):
         context = {
-                'events': Event.objects.all()
+            'events': Event.objects.all()
         }
-        return render(request, 'content/eventsToAccept.html',context )
-
+        return render(request, 'content/eventsToAccept.html', context)
 
 
 class eventPreviewView(DetailView):
@@ -113,16 +110,18 @@ class buyHowManyView(DetailView):
     model = Event
     template_name = 'content/buyHowMany.html'
 
+
 class buyWhatView(DetailView):
     def get(self, request: HttpRequest, pk):
-        num=int(request.GET['howMany'])
+        num = int(request.GET['howMany'])
 
         context = {
             'howMany': request.GET['howMany'],
 
-            'num' : range(num)
+            'num': range(num)
         }
         return render(request, 'content/buyWhat.html', context)
+
 
 class transactionView(DetailView):
     model = Event
@@ -139,3 +138,8 @@ class AddEventView(RoleRequiredMixin, FormView):
         event: Event = Event.objects.create(**form.cleaned_data)
         self.request.user.profile.organizer_role.event_set.add(event)
         return super().form_valid(form)
+
+
+class ShowOrganizerEventsView(RoleRequiredMixin, ListView):
+    role = 'O'
+    template_name = 'content/showorganizerevents.html'
