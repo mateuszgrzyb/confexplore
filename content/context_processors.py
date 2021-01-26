@@ -11,7 +11,7 @@ def search(request: HttpRequest) -> dict:
     }
 
     try:
-        context['user_type'] = request.user.profile.get_role()
+        context['user_type'] = request.user.profile.role_name
     except AttributeError:
         pass
 
