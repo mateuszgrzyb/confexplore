@@ -45,7 +45,7 @@
           <a class="dropdown-item" href="{% url 'accountSetting' %}">Ustawienia konta</a>
             <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
           {% elif user_type == "A" %}
-            <a class="dropdown-item" href="#">Zarządzaj wydarzeniami</a>
+            <a class="dropdown-item" href="{% url 'eventsToAccept' %}">Zarządzaj wydarzeniami</a>
             <a class="dropdown-item" href="#">Zarządzaj użytkownikami</a>
             <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
             {%endif%}
